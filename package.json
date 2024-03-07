@@ -1,7 +1,7 @@
 {
   "name": "homework",
   "version": "1.0.0",
-  "description": "Homework - Class 1",
+  "description": "Level Up Workspace",
   "main": "index.js",
   "scripts": {
     "dev": "tsc --watch"
