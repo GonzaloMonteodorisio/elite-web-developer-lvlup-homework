@@ -5,14 +5,15 @@ function factorial(num: number): number {
     for (let i: number = 1; i <= num; i++) {
       result *= i;
     }
-    console.info(`El factorial de ${num} es igual a: ${result}`);
+    console.info(`The factorial of ${num} is equal to: ${result}`);
     return result;
   } else {
-    throw new Error("El número debe ser un entero no negativo.");
+    throw new Error("The number must be a non-negative integer.");
   }
 }
 
 const num: number = 5;
-console.info(`El factorial de ${num} es igual a: ${factorial(num)}`);
+console.info(`The factorial of ${num} is equal to: ${factorial(num)}`);
+
 
 

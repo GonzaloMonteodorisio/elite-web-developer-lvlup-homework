@@ -5,13 +5,13 @@ function isPalindrome(str) {
         const length = lowerStr.length;
         if (length <= 1)
             return true;
-        if (lowerStr[0] != lowerStr[length - 1])
+        if (lowerStr[0] !== lowerStr[length - 1])
             return false;
         return isPalindrome(lowerStr.slice(1, length - 1));
     }
     else {
-        throw new Error("Debe ser una cadena de caracteres y no estar vacía.");
+        throw new Error("It must be a non-empty string.");
     }
 }
 const word = 'radar';
-console.info(isPalindrome(word) ? `La palabra '${word}' es palíndromo` : `La palabra '${word}' no es palíndromo`);
+console.info(isPalindrome(word) ? `The word '${word}' is a palindrome` : `The word '${word}' is not a palindrome`);
