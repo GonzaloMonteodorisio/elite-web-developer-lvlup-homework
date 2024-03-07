@@ -6,10 +6,10 @@ function gridTraveler(m: number, n: number): number {
     return gridTraveler(m - 1, n) + gridTraveler(m, n -1);
 
   } else {
-    throw new Error("It must be a non-empty string.");
+    throw new Error("Both dimensions must be non-negative integers.");
   }
 }
 
 const m = 4;
 const n = 4;
-console.info(`Para una cuadrícula de dimension ${m} x ${n} la cantidad de formas únicas de llegar desde la esquina superior izquierda a la esquina superior derecha son: ${gridTraveler(m, n)}`);
+console.info(`For a grid of dimension ${m} x ${n}, the number of unique ways to reach from the top-left corner to the top-right corner is: ${gridTraveler(m, n)}`);
