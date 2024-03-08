@@ -1,7 +1,7 @@
 function gridTraveler(m: number, n: number): number {
   if (Number.isInteger(m) && Number.isInteger(n)) {
     if (m === 0 || n === 0) return 0;
-    if (m === 1 || n === 1) return 1;
+    if (m === 1 && n === 1) return 1;
   
     return gridTraveler(m - 1, n) + gridTraveler(m, n -1);
 
