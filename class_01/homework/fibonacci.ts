@@ -9,5 +9,7 @@ function fibonacci(num: number): number {
   }
 }
 
+console.time("FIB");
 const number = 7;
 console.info(`The number at index ${number} in the Fibonacci sequence is equal to: ${fibonacci(number)}`);
+console.timeEnd("FIB");
