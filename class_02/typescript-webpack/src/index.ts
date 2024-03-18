@@ -18,5 +18,5 @@ console.info('duplicateNumbers: ', duplicateNumbers);
 
 const names = ['Pepe', 'Marcos', 'Pepe', 'José', 'José'];
 
-const uniqueNames = getUniquesItems(names);
+const uniqueNames = getUniquesItems<string>(names);
 console.info('uniqueNames: ', uniqueNames);
