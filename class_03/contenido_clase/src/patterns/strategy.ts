@@ -1,3 +1,12 @@
+import { useState } from 'react';
+
+/*
+  Strategy: patrón de comportamiento que se utiliza cuando existen algoritmos intercambiables.
+  El cliente define cual es el algoritmo que mejor se adapta al problema.
+
+  Interface: contrato que tiene que cumplir algo
+*/
+
 interface DiscountStrategy {
   applyDiscount(amount: number): number;
 }
@@ -50,4 +59,66 @@ class PaymentProcessor {
   }
 }
 
+/////////////////////////////////////////////////
+
+interface Product {
+  name: string,
+  price: number,
+  brand: string,
+  category: string,
+  description: string,
+}
+
+// Filtro
+// Aplicación que tiene que resolver un filtrado de productos por precio, categoría y marca
+
+interface Filter {
+  filter(products: Product[]): Product[];
+}
+
+class PriceFilter implements Filter {
+  constructor(public minPrice: number, public maxPrice: number) {}
+
+  filter(products: Product[]): Product[] {
+    return products.filter(product => product.price >= this.minPrice && product.price <= this.maxPrice);
+  }
+}
+
+// Tarea
+// CategoryFilter
+// BrandFilter
+
+class CategoryFilter implements Filter {
+  constructor(public category: string) {}
+
+  filter(products: Product[]): Product[] {
+    return products.filter(product => product.category === this.category);
+  }
+}
+
+class BrandFilter implements Filter {
+  constructor(public brand: string) {}
+
+  filter(products: Product[]): Product[] {
+    return products.filter(product => product.brand === this.brand);
+  }
+}
+
+// Pasar a React esta lógica de negocio
+export const useFilterProducts = (products: Product[], filterStrategy: Filter, minPrice?: number, maxPrice?: number) => {
+  const [currentFilterStrategy, setCurrentFilterStrategy] = useState<Filter>(new PriceFilter(minPrice || 0, maxPrice || Infinity));
+
+  const filterProducts = (products: Product[]) => {
+    return currentFilterStrategy.filter(products);
+  }
+
+  const changeFilterStrategy = (strategy: Filter) => {
+    return setCurrentFilterStrategy(strategy);
+  }
+
+  return {
+    filterProducts,
+    changeFilterStrategy,
+  }
+}
 
