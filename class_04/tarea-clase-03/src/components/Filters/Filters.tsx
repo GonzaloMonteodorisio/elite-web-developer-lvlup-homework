@@ -3,6 +3,7 @@ import * as React from "react";
 
 import type { Filter } from "../../utils/filterCharacterStrategy";
 import { filter } from "../../utils/filters";
+import Chip from "../Chip/Chip";
 
 interface FilterComponentProps {
   changeFilterStrategy: (strategy: Filter) => void;
@@ -17,7 +18,9 @@ const FilterComponent: React.FC<FilterComponentProps> = ({ changeFilterStrategy 
           onClick={() => changeFilterStrategy(filter.strategy)}
           style={{marginRight: '6px'}}
         >
-          {filter.name}
+          <Chip onClick={() => changeFilterStrategy(filter.strategy)}>
+            {filter.name}
+          </Chip>
         </span>
       ))}
     </>

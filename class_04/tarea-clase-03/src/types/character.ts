@@ -1,4 +1,4 @@
-export type Status = 'Alive' | 'unknown' | 'dead';
+export type Status = 'Alive' | 'Dead' | 'unknown';
 export type Species = 'Human' | 'Alien';
 export type Gender = 'Male' | 'Female' | 'unknown';
 
