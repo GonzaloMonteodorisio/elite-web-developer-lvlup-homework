@@ -5,9 +5,11 @@ import Character from "../Character/Character";
 import { AxiosError } from "axios";
 import { useFilterCharacters } from "../../hooks/useFilterCharacters";
 import FilterComponent from "../Filters/Filters";
+import { reducer, setCharacters } from "./reducer";
 
 export const Characters = () => {
-  const [characters, setCharacters] = React.useState<CharacterProps[]>([]);
+  const [state, dispatch] = React.useReducer(reducer, { characters: [] });
+  // const [characters, setCharacters] = React.useState<CharacterProps[]>([]);
   // debería haber un custom hook para useCharacters()
 
   const { filteredCharacters, changeFilterStrategy } = useFilterCharacters();
@@ -17,7 +19,8 @@ export const Characters = () => {
       try {
         const data = await getResources<FetchedCharacterProps>('/character');
         const { results } = data as FetchedCharacterProps;
-        setCharacters(results);
+        dispatch(setCharacters(results));
+        // setCharacters(results);
       } catch (err) {
         // Discriminar el tipo de error según la response. 
         // Setear un state dependiendo del tipo de error. 
@@ -38,14 +41,14 @@ export const Characters = () => {
     fetch();
   }, []);
 
-  console.info('characters: ', characters);
+  console.info('state.characters: ', state.characters);
 
   return (
     <>
       <FilterComponent changeFilterStrategy={changeFilterStrategy} />
       
       <div style={{ marginTop:'32px' }}>
-        {filteredCharacters(characters)?.map((character) => (
+        {filteredCharacters(state.characters)?.map((character) => (
           <Character
             key = {character.id}
             {...character}
