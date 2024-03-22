@@ -1,5 +1,4 @@
 // ESLint -> los tipos se importan como types
-import Character from "../components/Character";
 import type { CharacterProps, Gender, Status } from "../types/character";
 
 export interface Filter {
