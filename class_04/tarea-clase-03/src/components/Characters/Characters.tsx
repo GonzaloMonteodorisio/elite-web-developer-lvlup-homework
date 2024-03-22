@@ -1,6 +1,6 @@
 import * as React from "react";
 import { getResources } from "../../utils/getResources";
-import { type CharacterProps, FetchedCharacterProps } from "../../types/character";
+import { type FetchedCharacterProps } from "../../types/character";
 import Character from "../Character/Character";
 import { AxiosError } from "axios";
 import { useFilterCharacters } from "../../hooks/useFilterCharacters";
